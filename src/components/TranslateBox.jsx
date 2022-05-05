@@ -1,10 +1,11 @@
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { SelectBox } from "./SelectBox";
 import { error, success } from "../utils/notification";
 import copy from "copy-to-clipboard";
 import { AiFillCopy } from "react-icons/ai";
 import { MdClear } from "react-icons/md";
+
 
 export const TranslateBox = () => {
 
@@ -13,9 +14,6 @@ export const TranslateBox = () => {
     const [target, setTarget] = useState("");
     const [output, setOutput] = useState("");
 
-    const handleInputChange = ({ target: { value } }) => {
-        setQ(value);
-    }
 
     const handleSelectChange = ({ target: { value, id } }) => {
         id === "source" && setSource(value);
@@ -23,6 +21,11 @@ export const TranslateBox = () => {
     }
 
     const handleGetRequest = async () => {
+
+        if (q.length < 1) {
+            setOutput("");
+            return false;
+        };
 
         if (source === "" || target === "") {
             return error("Please select language");
@@ -32,11 +35,11 @@ export const TranslateBox = () => {
             let res = await axios.post("", { q, source, target, format: "text" });
             res = res.data.translatedText;
             setOutput(res);
-
         } catch (err) {
             console.log(err);
         }
     }
+
 
     const copyToClipboard = (text) => {
         copy(text);
@@ -53,15 +56,29 @@ export const TranslateBox = () => {
         }
     }
 
+    
+//Debounce Function
+    useEffect(() => {
+
+        let timerID = setTimeout(() => {
+            handleGetRequest();
+        }, 1000);
+
+        return () => {
+            clearTimeout(timerID);
+        }
+
+    }, [q]);
+
+
 
     return (
         <>
             <div className="mainBox">
-
                 <div>
                     <SelectBox id={'source'} select={handleSelectChange} />
                     <div className="box">
-                        <textarea onInput={handleInputChange} value={q} className="outputResult"></textarea>
+                        <textarea onChange={(e) => { setQ(e.target.value) }} value={q} className="outputResult"></textarea>
                     </div>
                     <div className="iconBox">
                         <p>{q.length}/250</p>
@@ -80,11 +97,7 @@ export const TranslateBox = () => {
                         <AiFillCopy onClick={() => { copyToClipboard(output) }} className="icon" />
                     </div>
                 </div>
-
-
             </div>
-            <button onClick={handleGetRequest}>Click</button>
-
         </>
     );
 };

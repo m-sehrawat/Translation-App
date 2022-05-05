@@ -2,7 +2,6 @@ body {
   margin: 0%;
   background-image: url('/images/circle.svg');
   background-repeat: repeat;
-  background-size: cover;
   color: white;
   font-family: 'Source Code Pro', monospace;
 }
