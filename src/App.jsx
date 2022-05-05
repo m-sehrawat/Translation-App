@@ -4,7 +4,6 @@ import { Translate } from './components/Translate'
 
 function App() {
 
-
   return (
     <div>
       <Translate />
@@ -12,4 +11,4 @@ function App() {
   )
 }
 
-export default App
+export default App;

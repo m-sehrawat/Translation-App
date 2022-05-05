@@ -1,6 +1,7 @@
-import { Box, Button, Select, Text, Textarea } from "@chakra-ui/react";
+import { Box, Button, Flex, Grid, GridItem, Image, Select, Text, Textarea } from "@chakra-ui/react";
 import axios from "axios";
 import { useState } from "react";
+import { SelectBox } from "./SelectBox";
 
 export const TranslateBox = () => {
 
@@ -11,6 +12,11 @@ export const TranslateBox = () => {
 
     const handleInputChange = ({ target: { value } }) => {
         setQ(value);
+    }
+
+    const handleSelectChange = ({ target: { value, id } }) => {
+        id === "source" && setSource(value);
+        id === "target" && setTarget(value);
     }
 
     const handleGetRequest = async () => {
@@ -26,36 +32,23 @@ export const TranslateBox = () => {
 
     return (
         <>
-            <Select onChange={(e) => { setSource(e.target.value) }} placeholder="Select Language">
-                <option value={'en'}>English</option>
-                <option value={'hi'}>Hindi</option>
-            </Select>
+            <div className="mainBox">
+                <SelectBox id={'source'} select={handleSelectChange} />
+                <SelectBox id={'target'} select={handleSelectChange} />
+            </div>
 
-            <Box w={'300px'} p={'10px'} bg={'#f2f2f2'} borderRadius={'30px'}>
-                <Textarea
-                    onInput={handleInputChange}
-                    resize={'vertical'}
-                    minH={'200px'}
-                    size={'sm'}
-                    placeholder='Enter your text here'
-                    borderRadius={'30px'}
-                    p={'20px'}
-                    bg={'white'}
-                    fontSize={'18px'}
-                    value={q}
-                />
-            </Box>
+            <div className="mainBox">
 
-            <Select onChange={(e) => { setTarget(e.target.value) }} placeholder="Select Language">
-                <option value={'en'}>English</option>
-                <option value={'es'}>Spanish</option>
-            </Select>
+                <div className="box">
+                    <textarea onInput={handleInputChange} value={q} className="outputResult"></textarea>
+                </div>
 
-            <Box>
-                <Text>{output}</Text>
-            </Box>
-
-            <Button onClick={handleGetRequest}>Translate</Button>
+                <div className="outputResult box">
+                    <p>{output}</p>
+                </div>
+            </div>
+            <button onClick={handleGetRequest}>Click</button>
         </>
     );
 };
+

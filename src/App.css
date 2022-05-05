@@ -1,0 +1,99 @@
+.br {
+    border: 1px solid red;
+}
+
+.mainBox {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 900px;
+    margin: 30px auto;
+    gap: 30px;
+}
+
+.box {
+    min-height: 230px;
+}
+
+.mainBox>div>p {
+    margin: 0%;
+}
+
+.outputResult {
+    border: 10px solid #a7233a;
+    border-radius: 20px;
+    padding: 20px;
+    font-size: 22px;
+    color: white;
+    font-weight: 500;
+    background: #001829;
+}
+
+
+textarea {
+    width: 85%;
+    height: 82%;
+    resize: vertical;
+}
+
+.navbar {
+    background-color: #a7233a;
+    /* border: 1px solid #a7233a; */
+    display: flex;
+    justify-content: center;
+}
+
+
+:root {
+    --background-gradient: linear-gradient(30deg, #f39c12 30%, #f1c40f);
+    --gray: #34495e;
+    --darkgray: #011e33;
+}
+
+select {
+    /* Reset Select */
+    appearance: none;
+    outline: 0;
+    border: 0;
+    box-shadow: none;
+    /* Personalize */
+    font-size: 18px;
+    font-family: 'Source Code Pro', monospace;
+    flex: 1;
+    padding: 0 1em;
+    color: #fff;
+    background-color: var(--darkgray);
+    background-image: none;
+    cursor: pointer;
+}
+
+/* Remove IE arrow */
+select::-ms-expand {
+    display: none;
+}
+
+/* Custom Select wrapper */
+.select {
+    position: relative;
+    display: flex;
+    width: 100%;
+    height: 3em;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+/* Arrow */
+.select::after {
+    content: '\25BC';
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 1em;
+    background-color: #34495e;
+    transition: .25s all ease;
+    pointer-events: none;
+}
+
+/* Transition */
+.select:hover::after {
+    color: #a7233a;
+}
