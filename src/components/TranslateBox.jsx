@@ -1,7 +1,10 @@
 import axios from "axios";
 import { useState } from "react";
 import { SelectBox } from "./SelectBox";
-import { error } from "../utils/notification";
+import { error, success } from "../utils/notification";
+import copy from "copy-to-clipboard";
+import { AiFillCopy } from "react-icons/ai";
+import { MdClear } from "react-icons/md";
 
 export const TranslateBox = () => {
 
@@ -21,7 +24,7 @@ export const TranslateBox = () => {
 
     const handleGetRequest = async () => {
 
-        if(source === "" || target === ""){
+        if (source === "" || target === "") {
             return error("Please select language");
         }
 
@@ -35,18 +38,24 @@ export const TranslateBox = () => {
         }
     }
 
+    const copyToClipboard = (text) => {
+        copy(text);
+        success("Copied to clipboard!")
+    }
 
-
-
+    const resetText = () => {
+        if (q === "" && output === "") {
+            error("Textbox is already empty!")
+        } else {
+            success("Text removed!")
+            setQ("");
+            setOutput("");
+        }
+    }
 
 
     return (
         <>
-            <div className="mainBox">
-
-
-            </div>
-
             <div className="mainBox">
 
                 <div>
@@ -54,18 +63,28 @@ export const TranslateBox = () => {
                     <div className="box">
                         <textarea onInput={handleInputChange} value={q} className="outputResult"></textarea>
                     </div>
+                    <div className="iconBox">
+                        <p>{q.length}/250</p>
+                        <AiFillCopy onClick={() => { copyToClipboard(q) }} className="icon" />
+                        <MdClear onClick={resetText} className="icon" />
+                    </div>
                 </div>
 
                 <div>
                     <SelectBox id={'target'} select={handleSelectChange} />
                     <div className="outputResult box">
-                        <p>{output}</p>
+                        <p id="output">{output}</p>
+                    </div>
+                    <div className="iconBox">
+                        <p>{output.length}/250</p>
+                        <AiFillCopy onClick={() => { copyToClipboard(output) }} className="icon" />
                     </div>
                 </div>
 
 
             </div>
             <button onClick={handleGetRequest}>Click</button>
+
         </>
     );
 };
