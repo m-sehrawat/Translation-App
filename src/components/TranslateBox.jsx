@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 import { SelectBox } from "./SelectBox";
+import { error } from "../utils/notification";
 
 export const TranslateBox = () => {
 
@@ -19,6 +20,11 @@ export const TranslateBox = () => {
     }
 
     const handleGetRequest = async () => {
+
+        if(source === "" || target === ""){
+            return error("Please select language");
+        }
+
         try {
             let res = await axios.post("", { q, source, target, format: "text" });
             res = res.data.translatedText;
@@ -28,6 +34,11 @@ export const TranslateBox = () => {
             console.log(err);
         }
     }
+
+
+
+
+
 
     return (
         <>

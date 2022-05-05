@@ -4,7 +4,7 @@ export const SelectBox = ({ id, select }) => {
         <>
             <div className="select">
                 <select id={id} onChange={select}>
-                    <option>Select Language</option>
+                    <option value="">Select Language</option>
                     <option value="en">English</option>
                     <option value="hi"> Hindi</option>
                     <option value="es">Spanish</option>
