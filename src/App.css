@@ -7,11 +7,13 @@
     grid-template-columns: repeat(2, 1fr);
     max-width: 900px;
     margin: 30px auto;
-    gap: 30px;
+    gap: 100px;
+    padding: 20px;
 }
 
 .box {
     min-height: 230px;
+    margin-top: 30px;
 }
 
 .mainBox>div>p {
@@ -28,16 +30,14 @@
     background: #001829;
 }
 
-
 textarea {
     width: 85%;
-    height: 82%;
+    min-height: 230px;
     resize: vertical;
 }
 
 .navbar {
     background-color: #a7233a;
-    /* border: 1px solid #a7233a; */
     display: flex;
     justify-content: center;
 }
@@ -96,4 +96,37 @@ select::-ms-expand {
 /* Transition */
 .select:hover::after {
     color: #a7233a;
+}
+
+
+@media screen and (max-width: 780px) {
+    .mainBox {
+        gap: 30px;
+    }
+
+    .box {
+        min-height: 180px;
+    }
+
+    textarea {
+        min-height: 180px;
+    }
+}
+
+
+@media screen and (max-width: 500px) {
+    .mainBox {
+        margin: 0px auto;
+        grid-template-columns: repeat(1, 1fr);
+        gap: 60px;
+    }
+
+    .box {
+        min-height: 150px;
+        margin-top: 20px;
+    }
+
+    textarea {
+        min-height: 150px;
+    }
 }

@@ -1,4 +1,3 @@
-import { Box, Button, Flex, Grid, GridItem, Image, Select, Text, Textarea } from "@chakra-ui/react";
 import axios from "axios";
 import { useState } from "react";
 import { SelectBox } from "./SelectBox";
@@ -33,19 +32,27 @@ export const TranslateBox = () => {
     return (
         <>
             <div className="mainBox">
-                <SelectBox id={'source'} select={handleSelectChange} />
-                <SelectBox id={'target'} select={handleSelectChange} />
+
+
             </div>
 
             <div className="mainBox">
 
-                <div className="box">
-                    <textarea onInput={handleInputChange} value={q} className="outputResult"></textarea>
+                <div>
+                    <SelectBox id={'source'} select={handleSelectChange} />
+                    <div className="box">
+                        <textarea onInput={handleInputChange} value={q} className="outputResult"></textarea>
+                    </div>
                 </div>
 
-                <div className="outputResult box">
-                    <p>{output}</p>
+                <div>
+                    <SelectBox id={'target'} select={handleSelectChange} />
+                    <div className="outputResult box">
+                        <p>{output}</p>
+                    </div>
                 </div>
+
+
             </div>
             <button onClick={handleGetRequest}>Click</button>
         </>
