@@ -1,4 +1,5 @@
-import { TranslateBox } from "./components/TranslateBox";
+import { TranslateBox } from "./TranslateBox";
+
 
 export const Translate = () => {
 

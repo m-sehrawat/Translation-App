@@ -1,5 +1,6 @@
 import './App.css'
-import { Translate } from './Translate'
+import { Translate } from './components/Translate'
+
 
 function App() {
 
