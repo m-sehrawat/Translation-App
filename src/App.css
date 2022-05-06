@@ -118,6 +118,29 @@ select::-ms-expand {
     color: #a7233a;
 }
 
+.tagLine {
+    display: flex;
+    justify-content: center;
+    margin-top: 70px;
+}
+
+#madeByMohit {
+    width: 0ch;
+    overflow: hidden;
+    white-space: nowrap;
+    animation: tagline 10s  infinite alternate;;
+    border-right: 3px solid white; 
+}
+
+@keyframes tagline {
+      0% {
+          width: 0ch;
+      }
+      50% {
+          width: 31ch;
+      }
+}
+
 
 @media screen and (max-width: 780px) {
     .mainBox {

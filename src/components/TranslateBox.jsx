@@ -98,6 +98,10 @@ export const TranslateBox = () => {
                     </div>
                 </div>
             </div>
+
+            <div className="tagLine">
+                <p id="madeByMohit">Made with ❤️ by Mohit Sehrawat</p>
+            </div>
         </>
     );
 };
