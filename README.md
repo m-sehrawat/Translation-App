@@ -49,6 +49,7 @@ This project is about building a web application to translate languages using la
 
 ## Demo
 
+https://user-images.githubusercontent.com/91532881/167123447-6377c777-9d46-43c7-af0a-3dd97c362caf.mp4
 
 
 <br/>
