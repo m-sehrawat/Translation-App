@@ -171,3 +171,9 @@ select::-ms-expand {
         min-height: 150px;
     }
 }
+
+@media screen and (max-width: 400px) {
+    .navbar>h1{
+        font-size: 28px
+    }
+}
