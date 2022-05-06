@@ -142,7 +142,7 @@ select::-ms-expand {
 }
 
 
-@media screen and (max-width: 780px) {
+@media screen and (max-width: 800px) {
     .mainBox {
         gap: 30px;
     }
@@ -156,7 +156,7 @@ select::-ms-expand {
     }
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 600px) {
     .mainBox {
         grid-template-columns: repeat(1, 1fr);
         gap: 60px;
