@@ -5,6 +5,7 @@ import { error, success } from "../utils/notification";
 import copy from "copy-to-clipboard";
 import { AiFillCopy } from "react-icons/ai";
 import { MdClear } from "react-icons/md";
+import { Animation } from "./Animation";
 
 
 export const TranslateBox = () => {
@@ -14,23 +15,19 @@ export const TranslateBox = () => {
     const [target, setTarget] = useState("");
     const [output, setOutput] = useState("");
 
-
     const handleSelectChange = ({ target: { value, id } }) => {
         id === "source" && setSource(value);
         id === "target" && setTarget(value);
     }
 
     const handleGetRequest = async () => {
-
         if (q.length < 1) {
             setOutput("");
             return false;
         };
-
         if (source === "" || target === "") {
             return error("Please select language");
         }
-
         try {
             let res = await axios.post("", { q, source, target, format: "text" });
             res = res.data.translatedText;
@@ -39,7 +36,6 @@ export const TranslateBox = () => {
             console.log(err);
         }
     }
-
 
     const copyToClipboard = (text) => {
         copy(text);
@@ -55,8 +51,7 @@ export const TranslateBox = () => {
             setOutput("");
         }
     }
-
-    
+ 
 //Debounce Function
     useEffect(() => {
 
@@ -69,7 +64,6 @@ export const TranslateBox = () => {
         }
 
     }, [q]);
-
 
 
     return (
@@ -98,6 +92,8 @@ export const TranslateBox = () => {
                     </div>
                 </div>
             </div>
+
+            <Animation />
 
             <div className="tagLine">
                 <p id="madeByMohit">Made with ❤️ by Mohit Sehrawat</p>
