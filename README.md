@@ -27,13 +27,6 @@
 This project is about building a web application to translate languages using language translator API from external services like [Libre Translate](https://libretranslate.de/). Here you will be able to translate between multiple languages and whenever you type something it will be automatically translated in the side panel. To use the app, choose the source language and target language from select options and then type anything in the text area and it will automatically translate it to the targeted language. 
 
 
-## 🚀 Features
-- Automatic translation of the text with debounce to save unnecessary network request
-- Work count on both sides of the text boxes
-- Copy to clipboard feature
-- Clear text from the textbox with one click 
-- Responsive for all screen sizes 
-
 <br/>
 
 ![Language Translator App](https://user-images.githubusercontent.com/91532881/167111293-6b2214bb-2311-4bdf-82a5-aa684226f698.png)
